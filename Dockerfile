@@ -3,3 +3,4 @@ FROM ubuntu:20.04
 RUN apt-get -y update
 RUN apt-get -y install nginx
 COPY web/index.html /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]
