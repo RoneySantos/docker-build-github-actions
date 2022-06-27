@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file Dockerfile --tag image-nginx:latest
 
     - name: Run the Docker image
-      run: docker run my-image-name:latest
+      run: docker run -p 80:80 my-image-name:latest
 
     - name: test url
       run: |
