@@ -24,7 +24,7 @@ jobs:
       run: |
         curl -X GET "http://localhost"
 
-  Show env:
+  Show_env:
 
     runs-on: ubuntu-latest
 
