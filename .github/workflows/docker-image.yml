@@ -17,6 +17,8 @@ jobs:
 
     - name: prepare Enviroment
       run: |
+        export DEBIAN_FRONTEND=noninteractive; \
+        export DEBCONF_NONINTERACTIVE_SEEN=true; \
         sudo echo 'tzdata tzdata/Areas select Etc' | debconf-set-selections; \
         sudo echo 'tzdata tzdata/Zones/Etc select UTC' | debconf-set-selections; \
         sudo apt-get update -qqy  && sudo apt-get install -qqy --no-install-recommends tzdata
