@@ -17,15 +17,14 @@ jobs:
 
     - name: prepare Enviroment
       run: |
-        export DEBIAN_FRONTEND=noninteractive; \
-        export DEBCONF_NONINTERACTIVE_SEEN=true; \
-        sudo echo 'tzdata tzdata/Areas select Etc' | debconf-set-selections; \
-        sudo echo 'tzdata tzdata/Zones/Etc select UTC' | debconf-set-selections; \
+        export DEBIAN_FRONTEND=noninteractive; 
+        export DEBCONF_NONINTERACTIVE_SEEN=true; 
+        printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
         sudo apt-get update -qqy  && sudo apt-get install -qqy --no-install-recommends tzdata
 
     - name: Install dependencies
       run: |
-        sudo apt-get install openssl policycoreutils -y
+        sudo apt-get install openssl policycoreutils libxml2 -y
         which openssl
         dpkg -l | grep  policycoreutils
 
