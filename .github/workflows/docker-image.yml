@@ -22,7 +22,7 @@ jobs:
       run: |
         sudo apt-get install openssl policycoreutils -y
         which openssl
-        which policycoreutils
+        dpkg -l | grep  policycoreutils
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag image-nginx:latest
