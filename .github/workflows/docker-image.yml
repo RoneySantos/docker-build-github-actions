@@ -22,7 +22,7 @@ jobs:
 
     - name: save debconf
       run: |
-        printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
+        sudo printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
 
     - name: Install dependencies
       run: |
