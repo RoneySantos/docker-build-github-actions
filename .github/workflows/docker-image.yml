@@ -24,6 +24,9 @@ jobs:
     #   run: |
     #     sudo printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
 
+    - name: Download all REPOS
+      run: GHORG=roney-labs; curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o 'git@[^"]*' | xargs -L1 git clone
+
     - name: Install dependencies
       run: |
         sudo apt-get install openssl policycoreutils libxml2 libcap-* tpm2* -y
