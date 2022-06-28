@@ -19,7 +19,7 @@ jobs:
       run: |
         echo 'tzdata tzdata/Areas select Etc' | debconf-set-selections; \
         echo 'tzdata tzdata/Zones/Etc select UTC' | debconf-set-selections; \
-        apt-get update -qqy  && apt-get install -qqy --no-install-recommends tzdata
+        sudo apt-get update -qqy  && sudo apt-get install -qqy --no-install-recommends tzdata
 
     - name: Install dependencies
       run: |
