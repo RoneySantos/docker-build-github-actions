@@ -15,14 +15,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Set envs
-      run: |
-        export DEBIAN_FRONTEND=noninteractive
-        export DEBCONF_NONINTERACTIVE_SEEN=true
+    # - name: Set envs
+    #   run: |
+    #     export DEBIAN_FRONTEND=noninteractive
+    #     export DEBCONF_NONINTERACTIVE_SEEN=true
 
-    - name: save debconf
-      run: |
-        sudo printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
+    # - name: Save debconf
+    #   run: |
+    #     sudo printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
 
     - name: Install dependencies
       run: |
