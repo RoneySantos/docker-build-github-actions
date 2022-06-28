@@ -21,6 +21,8 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get install openssl policycoreutils -y
+        which openssl
+        which policycoreutils
 
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag image-nginx:latest
