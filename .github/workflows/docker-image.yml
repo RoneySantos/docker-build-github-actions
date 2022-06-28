@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-      - name: Update System
+    - name: Update System
       run: apt-get update
 
     - name: Install dependencies
