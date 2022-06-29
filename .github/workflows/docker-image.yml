@@ -31,12 +31,12 @@ jobs:
         # GIT_BASE_URL: "github.com"
       run: |
         mkdir HSE && cd HSE
-        pwd
         GHORG=roney-labs; curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git" | xargs -L1 git clone
-        ls -lh /HSE/*/*
 
-    # - name: Show repos
-    #   run: ls -lh /HSE/*/*
+    - name: Show repos
+      run: | 
+        pwd
+        ls -lh /home/runner/work/docker-build-github-actions/docker-build-github-actions/HSE/*/*
 
     - name: Install dependencies
       run: |
