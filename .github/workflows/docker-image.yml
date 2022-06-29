@@ -6,10 +6,10 @@ on:
   pull_request:
     branches: [ "main" ]
 
-  # secrets:
-  #     GHC_TOKEN_RONEY:
-  #       description: Github token to use to clone
-  #       required: true
+  secrets:
+      GHC_TOKEN_RONEY:
+        description: Github token to use to clone
+        required: true
   #     git_user_roney:
   #       description: Github user to use to clone
   #       required: false
@@ -26,12 +26,13 @@ jobs:
     - name: Download all REPOS
       env:
         # git_user: "roneysantos"
-        # git_token: "${{ secrets.GHC_TOKEN }}"
-        GHORG: "roney-labs"
+        TOKEN: "${{ secrets.GHC_TOKEN_RONEY }}"
+        # GHORG: "roney-labs"
         # GIT_BASE_URL: "github.com"
       run: |
         mkdir HSE && cd HSE
-        GHORG=roney-labs; curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git" | xargs -L1 git clone
+        GHORG=roney-labs; curl -H "Authorization: token ${TOKEN}" \
+        -L "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git"
 
     - name: Show repos
       run: | 
