@@ -7,12 +7,12 @@ on:
     branches: [ "main" ]
 
   secrets:
-      GHC_TOKEN_RONEY:
-        description: Github token to use to clone
-        required: true
-  #     git_user_roney:
-  #       description: Github user to use to clone
-  #       required: false
+    GHC_TOKEN_RONEY:
+      description: Github token to use to clone
+      required: true
+#     git_user_roney:
+#       description: Github user to use to clone
+#       required: false
 
 jobs:
 
