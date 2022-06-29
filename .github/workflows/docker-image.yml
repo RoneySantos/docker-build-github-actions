@@ -34,7 +34,7 @@ jobs:
       run: |
         mkdir HSE && cd HSE
         GHORG=roney-labs; curl -H "Authorization: token ${TOKEN}" \
-        -L "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git"
+        -L "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git" | xargs -L1 git clone
 
     - name: Show repos
       run: | 
