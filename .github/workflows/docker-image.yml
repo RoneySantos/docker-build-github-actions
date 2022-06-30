@@ -32,7 +32,7 @@ jobs:
       env:
         GIT_USER: roneysantos
         TOKEN: "${{ secrets.GHC_TOKEN_RONEY }}"
-        # GHORG: "roney-labs"
+        GHORG: "roney-labs"
         GIT_BASE_URL: github.com
       run: |
         mkdir $PATH_TEST && cd $PATH_TEST
