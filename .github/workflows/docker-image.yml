@@ -28,14 +28,15 @@ jobs:
     - name: Download all REPOS
       env:
         PATH_TEST: "/tmp/test"
-        # git_user: "roneysantos"
+        GIT_USER: "roneysantos"
         TOKEN: "${{ secrets.GHC_TOKEN_RONEY }}"
         # GHORG: "roney-labs"
-        # GIT_BASE_URL: "github.com"
+        GIT_BASE_URL: "github.com"
       run: |
         mkdir $PATH_TEST && cd $PATH_TEST
         GHORG=roney-labs; curl -H "Authorization: token ${TOKEN}" \
-        -L "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git" | xargs -L1 git clone
+        -L "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git" | \
+        sed -e 's/https:\/\//https:\/\/${GIT_USER}:${TOKEN}@/' | xargs -L1 git clone
 
     - name: Show repos
       run: | 
