@@ -29,10 +29,10 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Download all REPOS
-        GIT_USER: "roneysantos"
+        GIT_USER: roneysantos
         TOKEN: "${{ secrets.GHC_TOKEN_RONEY }}"
         # GHORG: "roney-labs"
-        GIT_BASE_URL: "github.com"
+        GIT_BASE_URL: github.com
       run: |
         mkdir $PATH_TEST && cd $PATH_TEST
         curl -H "Authorization: token ${TOKEN}" \
