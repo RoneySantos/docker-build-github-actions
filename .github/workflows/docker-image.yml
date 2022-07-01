@@ -38,11 +38,7 @@ jobs:
         run: touch test && meu_alvo=$(realpath test)
       
       - name:
-        run: sleep 20
-
-    steps:
-      - name : Container ls
-        run: docker image ls
+        run: docker ps
       
 
   # Without_container:
