@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Mostrar raiz
-          run: pwd
+        run: pwd
   
 
   # Build:
