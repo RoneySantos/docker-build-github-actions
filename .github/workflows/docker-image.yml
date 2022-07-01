@@ -36,11 +36,6 @@ jobs:
       - name: Criar arquivo teste
         run: touch test && meu_alvo=$(realpath test)
 
-      - name: copiar para host
-        run: |
-          docker container ls
-        shell: bash
-
   Without_container:
     runs-on: ubuntu-latest
     
@@ -52,6 +47,8 @@ jobs:
 
       - name: Listar raiz
         run: ls -l
+
+      -name: docker volume ls vol-${{ github.run_id }}*
   
 
   # Build:
