@@ -38,7 +38,7 @@ jobs:
         run: touch test && meu_alvo=$(realpath test)
       
       - name:
-        run: sleep 10
+        run: sleep 20
 
   Without_container:
 
