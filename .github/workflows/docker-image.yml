@@ -40,15 +40,15 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v3
 
-      - name: Mostrar raiz
-        run: pwd
+    - name: Mostrar raiz
+      run: pwd
 
-      - name: Listar raiz
-        run: ls -l
+    - name: Listar raiz
+      run: ls -l
 
-      -name: docker volume ls vol-${{ github.run_id }}*
+    - name: docker volume ls vol-${{ github.run_id }}*
   
 
   # Build:
