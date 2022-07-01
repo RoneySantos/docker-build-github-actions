@@ -18,6 +18,7 @@ on:
 
 env:
   PATH_TEST: "/tmp/test"
+  GIT_USER: roneysantos
 
 jobs:
 
@@ -28,48 +29,61 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Download all REPOS
-      env:
-        GIT_USER: roneysantos
-        TOKEN: "${{ secrets.GHC_TOKEN_RONEY }}"
-        GHORG: "roney-labs"
-        GIT_BASE_URL: github.com
-      run: |
-        mkdir $PATH_TEST && cd $PATH_TEST
-        curl -H "Authorization: token ${TOKEN}" \
-        -L "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git" | \
-        sed -e 's/https:\/\//https:\/\/${GIT_USER}:${TOKEN}@/' | xargs -L1 git clone
+    - name: Tests envs
+        run: |
+          TAGS="devTest"
+          repos="${PATH_TEST}/${REPOS}"
+          mkdir repos
+          echo $PATH_TEST
+          echo $TAGS
+          echo $repos
 
-    - name: Show Repos
-      run: | 
-        pwd
-        ls -lh $PATH_TEST/*/*
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get install openssl policycoreutils libxml2 libcap-* tpm2* -y
-        which openssl
-        dpkg -l | grep  policycoreutils
+    # - name: Configure User git
+    #   run: |
+    #     git config --global user.name "Fulano de Tal"
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag image-nginx:latest
+    # - name: Download all REPOS
+    #   env:
+    #     TOKEN: "${{ secrets.GHC_TOKEN_RONEY }}"
+    #     GHORG: "roney-labs"
+    #     GIT_BASE_URL: github.com
+    #   run: |
+    #     mkdir $PATH_TEST && cd $PATH_TEST
+    #     curl -H "Authorization: token ${TOKEN}" \
+    #     -L "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o "https://github.com/${GHORG}[^\"]*.git" | \
+    #     sed -e 's/https:\/\//https:\/\/${GIT_USER}:${TOKEN}@/' | xargs -L1 git clone
 
-    - name: Run the Docker image
-      run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
+    # - name: Show Repos
+    #   run: | 
+    #     pwd
+    #     ls -lh $PATH_TEST/*/*
 
-    - name: test url
-      run: |
-        curl -X GET "http://localhost"
+    # - name: Install dependencies
+    #   run: |
+    #     sudo apt-get install openssl policycoreutils libxml2 libcap-* tpm2* -y
+    #     which openssl
+    #     dpkg -l | grep  policycoreutils
 
-  Ubuntu:
+    # - name: Build the Docker image
+    #   run: docker build . --file Dockerfile --tag image-nginx:latest
 
-    runs-on: ubuntu-latest
-    needs: [ Build ]
+    # - name: Run the Docker image
+    #   run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
 
-    steps:
-    - uses: actions/checkout@v3
-    - name: Show enviroment run in github action
-      run: cat /etc/issue
+    # - name: test url
+    #   run: |
+    #     curl -X GET "http://localhost"
+
+  # Ubuntu:
+
+  #   runs-on: ubuntu-latest
+  #   needs: [ Build ]
+
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: Show enviroment run in github action
+  #     run: cat /etc/issue
 
     # - name: Set envs
     #   run: |
