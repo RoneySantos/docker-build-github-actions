@@ -40,8 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      name: Mostrar raiz
-      run: pwd
+      - uses: actions/checkout@v3
+      - name: Mostrar raiz
+          run: pwd
   
 
   # Build:
