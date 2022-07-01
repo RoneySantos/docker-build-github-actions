@@ -30,13 +30,13 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Tests envs
-        run: |
-          TAGS="devTest"
-          repos="${PATH_TEST}/${REPOS}"
-          mkdir repos
-          echo $PATH_TEST
-          echo $TAGS
-          echo $repos
+      run: |
+        TAGS="devTest"
+        repos="${PATH_TEST}/${REPOS}"
+        mkdir repos
+        echo $PATH_TEST
+        echo $TAGS
+        echo $repos
 
 
     # - name: Configure User git
