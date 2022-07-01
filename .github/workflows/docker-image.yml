@@ -21,22 +21,37 @@ env:
   GIT_USER: roneysantos
 
 jobs:
-
-  Build:
-
+  Using_container:
     runs-on: ubuntu-latest
+    container:
+      image: alpine
+      env:
+        USER: "root"
+      volumes:
+        - vol-${{ github.run_id }}-workspace:/home/hss/go
+        - vol-${{ github.run_id }}-tmp:/tmp
+      options: -u 0:0
 
     steps:
-    - uses: actions/checkout@v3
+      - name: Criar arquivo teste
+        run: touch test && realpath test
 
-    - name: Tests envs
-      run: |
-        TAGS="devTest"
-        repos="${PATH_TEST}/${GIT_USER}"
-        mkdir repos
-        echo $PATH_TEST
-        echo $TAGS
-        echo $repos
+
+  # Build:
+
+    # runs-on: ubuntu-latest
+
+    # steps:
+    # - uses: actions/checkout@v3
+
+    # - name: Tests envs
+    #   run: |
+    #     TAGS="devTest"
+    #     repos="${PATH_TEST}/${GIT_USER}"
+    #     mkdir repos
+    #     echo $PATH_TEST
+    #     echo $TAGS
+    #     echo $repos
 
 
     # - name: Configure User git
