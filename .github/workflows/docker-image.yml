@@ -28,9 +28,9 @@ jobs:
       image: alpine
       env:
         USER: "root"
-      volumes:
-        - vol-${{ github.run_id }}-workspace:/
-        - vol-${{ github.run_id }}-tmp:/tmp
+      # volumes:
+      #   - vol-${{ github.run_id }}-workspace:/
+      #   - vol-${{ github.run_id }}-tmp:/tmp
       options: -u 0:0
 
     steps:
