@@ -34,8 +34,15 @@ jobs:
 
     steps:
       - name: Criar arquivo teste
-        run: touch test && realpath test
+        run: touch test && meu_alvo=$(realpath test)
 
+  Without_container:
+    runs-on: ubuntu-latest
+    
+    steps:
+      name: Mostrar raiz
+      run: pwd
+  
 
   # Build:
 
