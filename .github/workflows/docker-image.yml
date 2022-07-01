@@ -36,6 +36,9 @@ jobs:
     steps:
       - name: Criar arquivo teste
         run: touch test && meu_alvo=$(realpath test)
+      
+      - name:
+        run: sleep 10
 
   Without_container:
 
