@@ -32,7 +32,7 @@ jobs:
     - name: Tests envs
       run: |
         TAGS="devTest"
-        repos="${PATH_TEST}/${REPOS}"
+        repos="${PATH_TEST}/${GIT_USER}"
         mkdir repos
         echo $PATH_TEST
         echo $TAGS
