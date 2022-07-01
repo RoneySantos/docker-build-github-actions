@@ -51,7 +51,7 @@ jobs:
       run: ls -l
 
     - name: 
-      run: docker volume ls vol-${{ github.run_id }}*
+      run: docker volume ls
   
 
   # Build:
