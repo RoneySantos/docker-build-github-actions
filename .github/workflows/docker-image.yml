@@ -29,7 +29,7 @@ jobs:
       env:
         USER: "root"
       volumes:
-        - vol-${{ github.run_id }}-workspace:/home/hss/go
+        - vol-${{ github.run_id }}-workspace:/
         - vol-${{ github.run_id }}-tmp:/tmp
       options: -u 0:0
 
@@ -40,21 +40,26 @@ jobs:
       - name:
         run: sleep 20
 
-  Without_container:
-
-    runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v3
+      - name : Container ls
+        run: docker image ls
+      
 
-    - name: Mostrar raiz
-      run: pwd
+  # Without_container:
 
-    - name: Listar raiz
-      run: ls -l
+  #   runs-on: ubuntu-latest
+    
+  #   steps:
+  #   - uses: actions/checkout@v3
 
-    - name: 
-      run: docker volume ls
+  #   - name: Mostrar raiz
+  #     run: pwd
+
+  #   - name: Listar raiz
+  #     run: ls -l
+
+  #   - name: 
+  #     run: docker volume ls
   
 
   # Build:
