@@ -18,7 +18,6 @@ jobs:
 
       - name: Run the Docker image
         run: |
-        # PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
         echo $GITHUB_REF
         docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
 
