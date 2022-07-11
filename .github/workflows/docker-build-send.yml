@@ -7,10 +7,11 @@ on:
     branches: [ "main" ]
 
 jobs:
-  Build_Image_And-Send:
+  Build-Image-And-Send:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v2
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag image-nginx:latest
