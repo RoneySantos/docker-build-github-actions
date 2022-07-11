@@ -19,7 +19,9 @@ jobs:
       - name: Run the Docker image
         env:
           PR_NUMBER: $(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
-        run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
+        run: |
+        PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
+        docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
 
       - name: test url
         run: |
