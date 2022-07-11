@@ -21,24 +21,24 @@ env:
   GIT_USER: roneysantos
 
 jobs:
-  Using_container:
+  # Using_container:
 
-    runs-on: ubuntu-latest
-    container:
-      image: alpine
-      env:
-        USER: "root"
-      # volumes:
-      #   - vol-${{ github.run_id }}-workspace:/
-      #   - vol-${{ github.run_id }}-tmp:/tmp
-      options: -u 0:0
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: alpine
+  #     env:
+  #       USER: "root"
+  #     # volumes:
+  #     #   - vol-${{ github.run_id }}-workspace:/
+  #     #   - vol-${{ github.run_id }}-tmp:/tmp
+  #     options: -u 0:0
 
-    steps:
-      - name: Criar arquivo teste
-        run: touch test && meu_alvo=$(realpath test)
+  #   steps:
+  #     - name: Criar arquivo teste
+  #       run: touch test && meu_alvo=$(realpath test)
       
-      - name:
-        run: docker ps
+  #     - name:
+  #       run: docker ps
       
 
   # Without_container:
@@ -101,31 +101,31 @@ jobs:
     #     which openssl
     #     dpkg -l | grep  policycoreutils
 
-    # - name: Build the Docker image
-    #   run: docker build . --file Dockerfile --tag image-nginx:latest
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag image-nginx:latest
 
-    # - name: Run the Docker image
-    #   run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
+    - name: Run the Docker image
+      run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
 
-    # - name: test url
-    #   run: |
-    #     curl -X GET "http://localhost"
+    - name: test url
+      run: |
+        curl -X GET "http://localhost"
 
-  # Ubuntu:
+  Ubuntu:
 
-  #   runs-on: ubuntu-latest
-  #   needs: [ Build ]
+    runs-on: ubuntu-latest
+    needs: [ Build ]
 
-  #   steps:
-  #   - uses: actions/checkout@v3
-  #   - name: Show enviroment run in github action
-  #     run: cat /etc/issue
+    steps:
+    - uses: actions/checkout@v3
+    - name: Show enviroment run in github action
+      run: cat /etc/issue
 
-    # - name: Set envs
-    #   run: |
-    #     export DEBIAN_FRONTEND=noninteractive
-    #     export DEBCONF_NONINTERACTIVE_SEEN=true
+    - name: Set envs
+      run: |
+        export DEBIAN_FRONTEND=noninteractive
+        export DEBCONF_NONINTERACTIVE_SEEN=true
 
-    # - name: Save debconf
-    #   run: |
-    #     sudo printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
+    - name: Save debconf
+      run: |
+        sudo printf 'tzdata tzdata/Areas select Etc\ntzdata tzdata/Zones/Etc select UTC\n' | debconf-set-selections
