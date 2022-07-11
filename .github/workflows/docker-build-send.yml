@@ -15,7 +15,7 @@ jobs:
       
       - name: Show envs
         run: |
-          echo PR_NUMBER=$(echo $GITHUB_REF)
+          pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"))
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag image-nginx:latest
