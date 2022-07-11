@@ -100,15 +100,15 @@ jobs:
     #     which openssl
     #     dpkg -l | grep  policycoreutils
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag image-nginx:latest
+  - name: Build the Docker image
+    run: docker build . --file Dockerfile --tag image-nginx:latest
 
-    - name: Run the Docker image
-      run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
+  - name: Run the Docker image
+    run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
 
-    - name: test url
-      run: |
-        curl -X GET "http://localhost"
+  - name: test url
+    run: |
+      curl -X GET "http://localhost"
 
   Ubuntu:
 
