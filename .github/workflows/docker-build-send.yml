@@ -1,0 +1,23 @@
+name: Docker Build and Send Image
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  Build_Image_And-Send:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag image-nginx:latest
+
+      - name: Run the Docker image
+        run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
+
+      - name: test url
+        run: |
+          curl -X GET "http://localhost"
