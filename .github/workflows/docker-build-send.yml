@@ -18,8 +18,10 @@ jobs:
 
       - name: Run the Docker image
         run: |
-        echo $GITHUB_REF
-        docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
+        echo github.event.number = ${{ github.event.number  }}
+        echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
+        echo github.event.issue.number = ${{ github.event.issue.number }}
+        docker run --name mynginximage -p 80:80 -d image-nginx
 
       - name: test url
         run: |
