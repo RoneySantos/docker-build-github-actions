@@ -15,7 +15,7 @@ jobs:
       
       - name: Show envs
         env:
-          PR_NUMBER: ${{github.event.number}}
+          PR_NUMBER: ${{github.event.issue.number}}
         run: |
           echo $PR_NUMBER
 
