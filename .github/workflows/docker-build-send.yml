@@ -9,7 +9,6 @@ on:
 jobs:
   Build_Image_And-Send:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -18,7 +17,6 @@ jobs:
 
       - name: Run the Docker image
         run: |
-        pull_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
         docker run --name mynginximage -p 80:80 -d image-nginx
 
       - name: test url
