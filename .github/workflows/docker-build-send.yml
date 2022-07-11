@@ -17,7 +17,9 @@ jobs:
         run: docker build . --file Dockerfile --tag image-nginx:latest
 
       - name: Run the Docker image
-        run: docker run --name mynginximage -p 80:80 -d image-nginx:latest
+        env:
+          PR_NUMBER: $(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
+        run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
 
       - name: test url
         run: |
