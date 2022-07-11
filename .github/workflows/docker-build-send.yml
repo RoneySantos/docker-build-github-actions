@@ -15,7 +15,7 @@ jobs:
       
       - name: Show envs
         run: |
-          echo PR_NUMBER=$(echo $GITHUB_REF | awk 'BEGIN { FS = "/" } ; { print $3 }')
+          echo PR_NUMBER=$(echo $GITHUB_REF)
 
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag image-nginx:latest
