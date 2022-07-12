@@ -18,11 +18,11 @@ jobs:
 
         - name: Build the Docker image
         run: |
-        if [ -z ${PR_NUMBER} ]; then
-        docker run --name mynginximage -p 80:80 -d image-nginx:latest
-        else
+        if test -n "${PR_NUMBER}"; then
         docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
-        fi 
+        else
+        docker run --name mynginximage -p 80:80 -d image-nginx:latest
+        fi
 
       - name: Run the Docker image
         run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
