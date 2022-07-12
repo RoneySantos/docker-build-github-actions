@@ -28,6 +28,9 @@ jobs:
       - name: Run the Docker image
         run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
 
+      - name: Show images
+        run: docker image ls
+
       - name: test url
         run: |
           curl -X GET "http://localhost"
