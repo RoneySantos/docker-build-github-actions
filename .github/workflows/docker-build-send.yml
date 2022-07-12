@@ -25,7 +25,7 @@ jobs:
           fi
 
        - name: Run the Docker image
-         run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
+         run: docker run --name mynginximage -p 80:80 -d image-nginx:PR-${PR_NUMBER}
 
       - name: Show images
         run: docker image ls
