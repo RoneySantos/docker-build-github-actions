@@ -30,6 +30,7 @@ jobs:
           docker run --name mynginximage -p 80:80 -d image-nginx:PR-${PR_NUMBER}
           else
           docker run --name mynginximage -p 80:80 -d image-nginx:latest
+          fi
 
       - name: Show images
         run: docker image ls
