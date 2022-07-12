@@ -16,20 +16,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Build the Docker image
-        run: |
-        if test -n "${PR_NUMBER}"; then
-        docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
-        else
-        docker run --name mynginximage -p 80:80 -d image-nginx:latest
-        fi
+      # - name: Build the Docker image
+      #   run: |
+      #   if test -n "${PR_NUMBER}"; then
+      #   docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
+      #   else
+      #   docker run --name mynginximage -p 80:80 -d image-nginx:latest
+      #   fi
 
-      - name: Run the Docker image
-        run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
+      # - name: Run the Docker image
+      #   run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
 
       - name: Show images
         run: docker image ls | grep image-nginx
 
-      - name: test url
-        run: |
-          curl -X GET "http://localhost"
+      # - name: test url
+      #   run: |
+      #     curl -X GET "http://localhost"
