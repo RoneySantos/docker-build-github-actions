@@ -15,21 +15,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      
-      # - name: Show envs
-      #   env:
-      #     PR_NUMBER: "${{ github.event.number }}"
-      #   run: |
-      #     echo $PR_NUMBER
 
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag image-nginx:${PR_NUMBER}
+        - name: Build the Docker image
+        run: |
+        if [ -z ${PR_NUMBER} ]; then
+        docker run --name mynginximage -p 80:80 -d image-nginx:latest
+        else
+        docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
+        fi 
 
       - name: Run the Docker image
         run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
 
       - name: Show images
-        run: docker image ls
+        run: docker image ls | grep image-nginx
 
       - name: test url
         run: |
