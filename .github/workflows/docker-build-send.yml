@@ -19,17 +19,17 @@ jobs:
       - name: Build the Docker image
         run: |
           if test -n "${PR_NUMBER}"; then
-          docker build . --file Dockerfile --tag image-nginx:${PR_NUMBER}
+          docker build . --file Dockerfile --tag image-nginx:PR-${PR_NUMBER}
           else
           docker build . --file Dockerfile --tag image-nginx:latest
           fi
 
-      # - name: Run the Docker image
-      #   run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
+       - name: Run the Docker image
+         run: docker run --name mynginximage -p 80:80 -d image-nginx:${PR_NUMBER}
 
       - name: Show images
         run: docker image ls
 
-      # - name: test url
-      #   run: |
-      #     curl -X GET "http://localhost"
+       - name: test url
+         run: |
+           curl -X GET "http://localhost"
