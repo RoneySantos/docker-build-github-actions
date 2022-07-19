@@ -1,4 +1,4 @@
-name: Docker Build and Send Image
+name: Test envs
 
 on:
   push:
