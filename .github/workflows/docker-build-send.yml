@@ -15,26 +15,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      
+      - name: Teste usando repo atual
+        run: echo ${{github.repository}}
 
-      - name: Build the Docker image
-        run: |
-          if test -n "${PR_NUMBER}"; then
-          docker build . --file Dockerfile --tag image-nginx:PR-${PR_NUMBER}
-          else
-          docker build . --file Dockerfile --tag image-nginx:latest
-          fi
+      # - name: Build the Docker image
+      #   run: |
+      #     if test -n "${PR_NUMBER}"; then
+      #     docker build . --file Dockerfile --tag image-nginx:PR-${PR_NUMBER}
+      #     else
+      #     docker build . --file Dockerfile --tag image-nginx:latest
+      #     fi
 
-      - name: Run the Docker image
-        run: |
-          if test -n "${PR_NUMBER}"; then
-          docker run --name mynginximage -p 80:80 -d image-nginx:PR-${PR_NUMBER}
-          else
-          docker run --name mynginximage -p 80:80 -d image-nginx:latest
-          fi
+      # - name: Run the Docker image
+      #   run: |
+      #     if test -n "${PR_NUMBER}"; then
+      #     docker run --name mynginximage -p 80:80 -d image-nginx:PR-${PR_NUMBER}
+      #     else
+      #     docker run --name mynginximage -p 80:80 -d image-nginx:latest
+      #     fi
 
-      - name: Show images
-        run: docker image ls
+      # - name: Show images
+      #   run: docker image ls
 
-      - name: test url
-        run: |
-          curl -X GET "http://localhost"
+      # - name: test url
+      #   run: |
+      #     curl -X GET "http://localhost"
