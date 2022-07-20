@@ -22,7 +22,7 @@ jobs:
       - name: Tratar variavel
         id: variavel_test
         run: |
-        CURRENT_REPO2=$(echo $CURRENT_REPO | awk -F '/' '{print $2}') >> $GITHUB_ENV
+        echo "CURRENT_REPO2=$(echo $CURRENT_REPO | awk -F '/' '{print $2}')" >> $GITHUB_ENV
 
       - name: usando o valor
         run: echo "${{ env.CURRENT_REPO2 }}"
