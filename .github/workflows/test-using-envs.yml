@@ -13,9 +13,21 @@ env:
   PATH_REPO_DOCKER2: "hub.docker.hpecorp.net/pivs/"
 
 jobs:
-  using_other_repo:
-    uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
+
+  popular_variavel:
+  runs-on: ubuntu-latest
+  steps:
+  - name: salvar saida
+      id: variavel_test
+      uses: actions/checkout@v2
+      run: echo "Nova variavel"
+  outputs:
+    nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
     
+  using_other_repo:
+    needs: variavel_test
+    uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
+
 
   # test_continuous:
   # runs-on: ubuntu-latest
