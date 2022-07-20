@@ -21,8 +21,8 @@ jobs:
       - name: salvar saida
         id: variavel_test
         run: echo "Nova variavel"
-    # outputs:
-      # nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
+    outputs:
+      nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
     
   # using_other_repo:
     # needs: variavel_test
