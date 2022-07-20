@@ -23,10 +23,17 @@ jobs:
         run: echo "Nova variavel"
     outputs:
       nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
-    
-  using_other_repo:
+
+  testando_variavel:
+    runs-on: ubuntu-latest
     needs: variavel_test
-    uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
+    steps:
+      - name: Mostrar variavel
+        run: echo ${{ steps.variavel_test.outputs.nova_variavel }}
+    
+  # using_other_repo:
+    # needs: variavel_test
+    # uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
 
 
   # test_continuous:
