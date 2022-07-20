@@ -13,14 +13,14 @@ env:
   PATH_REPO_DOCKER2: "hub.docker.hpecorp.net/pivs/"
 
 jobs:
-
   popular_variavel:
+
     runs-on: ubuntu-latest
     steps:
-    - name: salvar saida
-      id: variavel_test
-      uses: actions/checkout@v2
-      run: echo "Nova variavel"
+      - name: salvar saida
+        id: variavel_test
+        uses: actions/checkout@v2
+        run: echo "Nova variavel"
     outputs:
       nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
     
