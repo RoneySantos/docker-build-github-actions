@@ -11,6 +11,7 @@ env:
   PR_NUMBER: "${{ github.event.number }}"
   PATH_REPO_DOCKER: "hub.docker.hpecorp.net/pivs/"
   PATH_REPO_DOCKER2: "hub.docker.hpecorp.net/pivs/"
+  CURRENT_REPO: "${{ github.repository }}" 
 
 jobs:
 
@@ -18,18 +19,21 @@ jobs:
 
     runs-on: [self-hosted, main]
     steps:
-      - name: salvar saida
+      - name: Tratar variavel
         id: variavel_test
-        run: echo "Nova variavel"
-    outputs:
-      nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
+        run: CURRENT_REPO=$(echo $CURRENT_REPO | awk -F '/' '{print $2}') >> $GITHUB_ENV
 
-  testando_variavel:
-    runs-on: [self-hosted, "${{ steps.variavel_test.outputs.nova_variavel }}"]
-    needs: variavel_test
-    steps:
-      - name: Mostrar variavel
-        run: echo ${{ steps.variavel_test.outputs.nova_variavel }}
+      - name: usando o valor
+        run: echo "${{ env.CURRENT_REPO }}"
+    # outputs:
+      # nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
+
+  # testando_variavel:
+    # runs-on: [self-hosted, "${{ steps.variavel_test.outputs.nova_variavel }}"]
+    # needs: variavel_test
+    # steps:
+      # - name: Mostrar variavel
+        # run: echo ${{ steps.variavel_test.outputs.nova_variavel }}
     
   # using_other_repo:
     # needs: variavel_test
