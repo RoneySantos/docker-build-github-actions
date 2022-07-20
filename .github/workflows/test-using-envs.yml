@@ -1,4 +1,4 @@
-#test 3
+#test 33
 name: Test envs
 
 on:
@@ -15,14 +15,14 @@ env:
 jobs:
 
   popular_variavel:
-  runs-on: ubuntu-latest
-  steps:
-  - name: salvar saida
-    id: variavel_test
-    uses: actions/checkout@v2
-    run: echo "Nova variavel"
-  outputs:
-    nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: salvar saida
+      id: variavel_test
+      uses: actions/checkout@v2
+      run: echo "Nova variavel"
+    outputs:
+      nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
     
   using_other_repo:
     needs: variavel_test
