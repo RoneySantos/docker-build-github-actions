@@ -17,7 +17,7 @@ jobs:
 
   popular_variavel:
 
-    runs-on: [self-hosted, main]
+    runs-on: ubuntu-latest
     steps:
       - name: Tratar variavel
         id: variavel_test
