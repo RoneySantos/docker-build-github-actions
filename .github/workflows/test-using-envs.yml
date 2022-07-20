@@ -1,3 +1,4 @@
+#test 1
 name: Test envs
 
 on:
@@ -9,6 +10,7 @@ on:
 env:
   PR_NUMBER: "${{ github.event.number }}"
   PATH_REPO_DOCKER: "hub.docker.hpecorp.net/pivs/"
+  PATH_REPO_DOCKER2: "hub.docker.hpecorp.net/pivs/"
 
 jobs:
   using_other_repo:
