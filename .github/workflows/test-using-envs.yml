@@ -20,7 +20,6 @@ jobs:
     steps:
       - name: salvar saida
         id: variavel_test
-        uses: actions/checkout@v2
         run: echo "Nova variavel"
     # outputs:
       # nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
