@@ -2,12 +2,13 @@
 name: Test envs
 
 on:
-  inputs:
-    image_repo:
-      description: Testando envio de variaveis
-      default: "echo 'IMAGE_REPO=hss-apigw' >> $GITHUB_ENV"
-      required: false
-      type: string
+  workflow_call:
+    inputs:
+      image_repo:
+        description: Testando envio de variaveis
+        default: "echo 'IMAGE_REPO=hss-apigw' >> $GITHUB_ENV"
+        required: false
+        type: string
 
   push:
     branches: [ "main" ]
