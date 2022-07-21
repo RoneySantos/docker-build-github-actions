@@ -2,6 +2,12 @@
 name: Test envs
 
 on:
+  inputs:
+    description: Testando envio de variaveis
+    default: "echo 'IMAGE_REPO=hss-apigw' >> $GITHUB_ENV"
+    required: false
+    type: string
+    
   push:
     branches: [ "main" ]
   pull_request:
@@ -17,45 +23,4 @@ jobs:
   popular_variavel:
     uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
 
-    # runs-on: ubuntu-latest
-    # steps:
-      # - name: Tratar variavel
-        # id: variavel_test
-        # run: |
-          # echo "CURRENT_REPO=$(echo $CURRENT_REPO | awk -F '/' '{print $2}')" >> $GITHUB_ENV
-# 
-      # - name: usando o valor
-        # run: echo "${{ env.CURRENT_REPO }}"
-    # outputs:
-      # nova_variavel: ${{ steps.variavel_test.outputs.nova_variavel }}
 
-  # testando_variavel:
-    # runs-on: [self-hosted, "${{ steps.variavel_test.outputs.nova_variavel }}"]
-    # needs: variavel_test
-    # steps:
-      # - name: Mostrar variavel
-        # run: echo ${{ steps.variavel_test.outputs.nova_variavel }}
-    
-  # using_other_repo:
-    # needs: variavel_test
-    # uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
-
-
-  # test_continuous:
-  # runs-on: ubuntu-latest
-  # steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v2
-
-  #   - name: Apenas um teste
-  #     run: date
-
-# jobs:
-#   Build-Image-And-Send:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-      
-#       - name: Teste usando repo atual
-#         run: echo ${PATH_REPO_DOCKER}${{github.repository}}
