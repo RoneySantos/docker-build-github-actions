@@ -3,12 +3,6 @@ name: Test envs
 
 on:
   workflow_call:
-    inputs:
-      image_repo:
-        description: Testando envio de variaveis
-        default: "echo 'IMAGE_REPO=hss-apigw' >> $GITHUB_ENV"
-        required: false
-        type: string
 
   push:
     branches: [ "main" ]
@@ -26,5 +20,8 @@ jobs:
 
   popular_variavel:
     uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
+  with:
+    image_repo: "echo repos='api-gateway/cmd/apigw/\nauthentication/cmd/accounts/' >> $GITHUB_ENV"
+
 
 
