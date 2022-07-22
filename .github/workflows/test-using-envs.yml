@@ -21,6 +21,7 @@ jobs:
   popular_variavel:
     uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
     with:
+      image_repo: "IMAGE_REPO='hss-apigw' >> $GITHUB_ENV"
       path_repos_build: "repos='api-gateway/cmd/apigw/\nauthentication/cmd/accounts/' >> $GITHUB_ENV "
 
 
