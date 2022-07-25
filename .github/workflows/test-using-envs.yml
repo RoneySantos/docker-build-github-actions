@@ -19,6 +19,8 @@ env:
 jobs:
 
   popular_variavel:
+    env:
+      roney_test: "deu certo"
     uses: RoneySantos/lab-notifier-jenkins-ia/.github/workflows/test_to_use_other_repo.yaml@main
     with:
       image_repo: "IMAGE_REPO='hss-apigw' >> $GITHUB_ENV"
