@@ -25,7 +25,7 @@ jobs:
       path_repos_build: "repos='api-gateway/cmd/apigw/\nauthentication/cmd/accounts/' >> $GITHUB_ENV"
       create_folders_to_build: "ls -l /tmp && ls $HOME"
     env:
-      roney_test: "deu certo"
+      RONEY: "deu certo"
 
 
 
