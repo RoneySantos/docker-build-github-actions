@@ -24,8 +24,13 @@ jobs:
       image_repo: "IMAGE_REPO='hss-apigw' >> $GITHUB_ENV"
       path_repos_build: "repos='api-gateway/cmd/apigw/\nauthentication/cmd/accounts/' >> $GITHUB_ENV"
       create_folders_to_build: "ls -l /tmp && ls $HOME"
+
+  Novo_test:
     env:
       RONEY: "deu certo"
+    steps:
+      - name: Run run
+        run: echo "${{ env.RONEY }}" 
 
 
 
