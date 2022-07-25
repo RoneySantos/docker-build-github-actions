@@ -26,6 +26,7 @@ jobs:
       create_folders_to_build: "ls -l /tmp && ls $HOME"
 
   Novo_test:
+    runs-on: ubuntu-latest
     env:
       RONEY: deu certo
     steps:
