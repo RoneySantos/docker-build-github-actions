@@ -27,7 +27,7 @@ jobs:
 
   Novo_test:
     env:
-      RONEY: "deu certo"
+      RONEY: deu certo
     steps:
       - name: Run run
         run: echo "${{ env.RONEY }}" 
